@@ -10,6 +10,7 @@ package Modelo;
  */
 public class Cliente {
     private String nombre, correo, contraseña;
+    private int id_cliente;
 
     public Cliente() {
     }
@@ -44,6 +45,16 @@ public class Cliente {
         this.contraseña = contraseña;
     }
 
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return "Cliente{" + "nombre=" + nombre + ", correo=" + correo + ", contrase\u00f1a=" + contraseña + '}';

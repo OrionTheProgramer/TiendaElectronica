@@ -6,18 +6,17 @@ package Vista;
 
 import Controlador.ClienteCTL;
 import Modelo.Cliente;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author orion
  */
-public class Registro extends javax.swing.JPanel {
+public class Sesion extends javax.swing.JPanel {
 
     /**
-     * Creates new form Registro
+     * Creates new form Sesion
      */
-    public Registro() {
+    public Sesion() {
         initComponents();
     }
 
@@ -32,23 +31,21 @@ public class Registro extends javax.swing.JPanel {
 
         Panel_base = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        Label_registro = new javax.swing.JLabel();
+        Label_inicio = new javax.swing.JLabel();
         Label_correo = new javax.swing.JLabel();
         Label_contraseña = new javax.swing.JLabel();
         txt_correo = new javax.swing.JTextField();
         txt_contraseña = new javax.swing.JPasswordField();
         Label_error = new javax.swing.JLabel();
-        bt_registrar = new javax.swing.JButton();
-        Label_nombre = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
+        bt_iniciar = new javax.swing.JButton();
 
         Panel_base.setBackground(new java.awt.Color(153, 153, 153));
         Panel_base.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(243, 243, 243));
 
-        Label_registro.setFont(new java.awt.Font("Roboto Medium", 0, 38)); // NOI18N
-        Label_registro.setText("Registro");
+        Label_inicio.setFont(new java.awt.Font("Roboto Medium", 0, 38)); // NOI18N
+        Label_inicio.setText("Inicio de sesion");
 
         Label_correo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         Label_correo.setText("Correo");
@@ -58,67 +55,51 @@ public class Registro extends javax.swing.JPanel {
 
         Label_error.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
 
-        bt_registrar.setBackground(new java.awt.Color(54, 151, 167));
-        bt_registrar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        bt_registrar.setForeground(new java.awt.Color(255, 255, 255));
-        bt_registrar.setText("Registrar");
-        bt_registrar.addActionListener(new java.awt.event.ActionListener() {
+        bt_iniciar.setBackground(new java.awt.Color(54, 151, 167));
+        bt_iniciar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        bt_iniciar.setForeground(new java.awt.Color(255, 255, 255));
+        bt_iniciar.setText("Iniciar");
+        bt_iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_registrarActionPerformed(evt);
+                bt_iniciarActionPerformed(evt);
             }
         });
-
-        Label_nombre.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        Label_nombre.setText("Nombre");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Label_registro)
-                        .addGap(21, 21, 21))
+                        .addGap(33, 33, 33)
+                        .addComponent(Label_inicio))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(33, 33, 33)
-                                        .addComponent(Label_correo)
-                                        .addGap(37, 37, 37))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Label_contraseña)
-                                        .addGap(18, 18, 18))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
-                                .addComponent(Label_nombre)
-                                .addGap(29, 29, 29)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Label_correo)
+                                .addGap(37, 37, 37))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(Label_contraseña)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label_error)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                            .addComponent(txt_contraseña)
-                            .addComponent(txt_nombre))))
-                .addContainerGap(69, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 117, Short.MAX_VALUE)
-                .addComponent(bt_registrar)
-                .addGap(120, 120, 120))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_correo)
+                                .addComponent(txt_contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(bt_iniciar)))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Label_registro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_nombre)
-                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label_inicio)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_correo)
                     .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -126,8 +107,8 @@ public class Registro extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_contraseña))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bt_registrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(bt_iniciar)
                 .addGap(27, 27, 27)
                 .addComponent(Label_error)
                 .addGap(22, 22, 22))
@@ -157,54 +138,36 @@ public class Registro extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registrarActionPerformed
-
-        
-        // Validar datos
-        String nombre = txt_nombre.getText().trim();
+    private void bt_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_iniciarActionPerformed
         String correo = txt_correo.getText().trim();
         String contraseña = new String(txt_contraseña.getPassword()).trim();
 
-        if (nombre.isEmpty() || correo.isEmpty() || contraseña.isEmpty()) {
+        if (correo.isEmpty() || contraseña.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if (!correo.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingresa un correo válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        ClienteCTL clienteCTL = new ClienteCTL();
+        Cliente cliente = clienteCTL.IniciarSesion(correo, contraseña);
 
-        // Creando objeto cliente y asignando los datos
-        Cliente cliente = new Cliente();
-        cliente.setNombre(nombre);
-        cliente.setCorreo(correo);
-        cliente.setContraseña(contraseña);
+        if (cliente != null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-        // Creando objeto controlador y registrando cliente
-        ClienteCTL cliente_updater = new ClienteCTL();
-        boolean registrado = cliente_updater.registrarCliente(cliente);
-
-        // Mostrar mensaje según resultado
-        if (registrado) {
-            JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso!!", "Exito", 1);
         } else {
-            JOptionPane.showMessageDialog(null, "Error al verificar las credenciales", "Error", 3);
+            javax.swing.JOptionPane.showMessageDialog(this, "Credenciales incorrectas. Inténtalo nuevamente.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_bt_registrarActionPerformed
+    }//GEN-LAST:event_bt_iniciarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_contraseña;
     private javax.swing.JLabel Label_correo;
     private javax.swing.JLabel Label_error;
-    private javax.swing.JLabel Label_nombre;
-    private javax.swing.JLabel Label_registro;
+    private javax.swing.JLabel Label_inicio;
     private javax.swing.JPanel Panel_base;
-    private javax.swing.JButton bt_registrar;
+    private javax.swing.JButton bt_iniciar;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField txt_contraseña;
     private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }

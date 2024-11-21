@@ -12,7 +12,7 @@ public class Conexion {
     public static Connection connect() {
         Connection conn = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/chinoburger"; 
+            String url = "jdbc:mysql://localhost:3306/sololibros"; 
             String user = "root";
             String password = "OrionGames2029";
             conn = DriverManager.getConnection(url, user, password);
