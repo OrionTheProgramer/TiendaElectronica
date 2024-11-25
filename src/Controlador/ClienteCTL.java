@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class ClienteCTL {
     public static boolean registrarCliente(Cliente cliente) {
-        String query = "INSERT INTO cliente (nombre, correo, contraseña) VALUES (?, ?, ?)";
+        String query = "INSERT INTO cliente (user_name, correo, contraseña) VALUES (?, ?, ?)";
         boolean registroExitoso = false;
 
         try (Connection conn = Conexion.connect();
@@ -39,15 +39,14 @@ public class ClienteCTL {
         return registroExitoso;
     }
     
-    public static Cliente IniciarSesion(String correo, String contraseña) {
-        String query = "SELECT * FROM Cliente WHERE correo = ? AND contraseña = ?";
+    public static Cliente IniciarSesion(String user_name, String contraseña) {
+        String query = "SELECT * FROM Cliente WHERE user_name = ? AND contraseña = ?";
         Cliente data = new Cliente();
-        int contador = 0;
 
         try (Connection conn = Conexion.connect();
              PreparedStatement cliente = conn.prepareStatement(query)) {
 
-            cliente.setString(1, correo);
+            cliente.setString(1, user_name);
             cliente.setString(2, contraseña);
 
             try (ResultSet rs = cliente.executeQuery()) {
@@ -55,7 +54,7 @@ public class ClienteCTL {
                 if (rs.next()) {
                     // Si se encuentra un registro, el inicio de sesión es exitoso
                     System.out.println("Ingrreso Correcto");
-                    data.setNombre(rs.getString("nombre"));
+                    data.setNombre(rs.getString("user_name"));
                     data.setCorreo(rs.getString("correo"));
                     data.setContraseña(rs.getString("contraseña"));
                     
