@@ -9,14 +9,13 @@ package Modelo;
  * @author orion
  */
 public class Producto {
-    private String nom_pc, fabricante, procesador, grafica, ram, disco;
-    private int precio;
+    private String fabricante, procesador, grafica, ram, disco;
+    private int precio, id;
 
     public Producto() {
     }
 
-    public Producto(String nom_pc, String fabricante, String procesador, String grafica, String ram, String disco, int precio) {
-        this.nom_pc = nom_pc;
+    public Producto( String fabricante, String procesador, String grafica, String ram, String disco, int precio) {
         this.fabricante = fabricante;
         this.procesador = procesador;
         this.grafica = grafica;
@@ -31,14 +30,6 @@ public class Producto {
 
     public void setRam(String ram) {
         this.ram = ram;
-    }
-
-    public String getNom_pc() {
-        return nom_pc;
-    }
-
-    public void setNom_pc(String nom_pc) {
-        this.nom_pc = nom_pc;
     }
 
     public String getFabricante() {
@@ -81,9 +72,17 @@ public class Producto {
         this.precio = precio;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "Producto{" + "nom_pc=" + nom_pc + ", fabricante=" + fabricante + ", procesador=" + procesador + ", grafica=" + grafica + ", disco=" + disco + ", precio=" + precio + '}';
+        return "Producto{fabricante=" + fabricante + ", procesador=" + procesador + ", grafica=" + grafica + ", disco=" + disco + ", precio=" + precio + '}';
     }
     
     

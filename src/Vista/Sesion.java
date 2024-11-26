@@ -236,7 +236,7 @@ public class Sesion extends javax.swing.JPanel {
 
         if (cliente != null) {
             javax.swing.JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            Tienda T = new Tienda();
+            Tienda T = new Tienda(cliente);
             CambiarPanel(T);
 
         } else {

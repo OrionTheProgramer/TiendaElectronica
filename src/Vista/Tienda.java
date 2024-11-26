@@ -3,8 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Vista;
+import Controlador.ClienteCTL;
 import Controlador.ProductoCTL;
+import Modelo.Cliente;
 import Modelo.Producto;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,13 +18,47 @@ public class Tienda extends javax.swing.JPanel {
 
     /**
      * Creates new form Tienda
+     * @param user
      */
-    public Tienda() {
+    public Tienda(Cliente user) {
         initComponents();
+        
+        this.label_usuario.setText(user.getNombre());
+        ProductoCTL ctl = new ProductoCTL();
+        borrar(panel_producto1, pctl, 1);
+        borrar(panel_producto2, pctl, 2);
+        borrar(panel_producto3, pctl, 3);
+        
+    }
+    
+    public void CambiarPanel(JPanel p){
+        Panel_base.setLayout(new BorderLayout());
+
+        // Quitar componentes actuales y agregar uno nuevo
+        Panel_base.removeAll();
+        Panel_base.add(p);
+        Panel_base.revalidate(); // Actualiza el diseño
+        Panel_base.repaint();    // Redibuja el contenedor
     }
     
     // Creando objeto controlador de los productos
     ProductoCTL pctl = new ProductoCTL();
+    // Creando objeto controlador de cliente
+    ClienteCTL clientectl = new ClienteCTL();
+    
+    // Metodo pra borrar los productos si no existen 
+    public static void borrar(JPanel p, ProductoCTL ctl, int id){
+        if (ctl.Componentes(id) != null){
+            System.out.println("Panel "+id+" Verificado");
+        }else{
+            p.hide();
+            System.out.println("Panel eliminado");
+        }
+    }
+    
+    public void Comprar(){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,14 +73,26 @@ public class Tienda extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         Label_error1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        label_usuario = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         Label_error2 = new javax.swing.JLabel();
         bt_salir = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
+        panel_producto1 = new javax.swing.JPanel();
         Label_error3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        bt_comprar = new javax.swing.JButton();
-        bt_verComponentes = new javax.swing.JButton();
+        bt_comprar1 = new javax.swing.JButton();
+        bt_verComponentes1 = new javax.swing.JButton();
+        panel_producto2 = new javax.swing.JPanel();
+        Label_error4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        bt_comprar2 = new javax.swing.JButton();
+        bt_verComponentes2 = new javax.swing.JButton();
+        panel_producto3 = new javax.swing.JPanel();
+        Label_error5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        bt_comprar3 = new javax.swing.JButton();
+        bt_verComponentes3 = new javax.swing.JButton();
 
         Panel_base.setBackground(new java.awt.Color(58, 6, 12));
         Panel_base.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -55,6 +105,14 @@ public class Tienda extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("SoloTodo");
 
+        jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Conectado como -> ");
+
+        label_usuario.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        label_usuario.setForeground(new java.awt.Color(255, 255, 255));
+        label_usuario.setText("null");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -66,7 +124,11 @@ public class Tienda extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel2)
-                .addContainerGap(775, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_usuario)
+                .addContainerGap(596, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +136,10 @@ public class Tienda extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(Label_error1))
+                    .addComponent(Label_error1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(label_usuario)))
                 .addGap(22, 22, 22))
         );
 
@@ -88,6 +153,11 @@ public class Tienda extends javax.swing.JPanel {
         bt_salir.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         bt_salir.setForeground(new java.awt.Color(255, 255, 255));
         bt_salir.setText("Salir");
+        bt_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -112,70 +182,196 @@ public class Tienda extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Panel_base.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1000, 40));
+        Panel_base.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 1000, 50));
 
-        jPanel5.setBackground(new java.awt.Color(34, 36, 38));
+        panel_producto1.setBackground(new java.awt.Color(34, 36, 38));
 
         Label_error3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("PC full amd reddragon ");
+        jLabel4.setText("Computadora 1");
 
-        bt_comprar.setBackground(new java.awt.Color(86, 73, 98));
-        bt_comprar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        bt_comprar.setForeground(new java.awt.Color(255, 255, 255));
-        bt_comprar.setText("Comprar");
-        bt_comprar.addActionListener(new java.awt.event.ActionListener() {
+        bt_comprar1.setBackground(new java.awt.Color(86, 73, 98));
+        bt_comprar1.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        bt_comprar1.setForeground(new java.awt.Color(255, 255, 255));
+        bt_comprar1.setText("Comprar");
+        bt_comprar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_comprarActionPerformed(evt);
+                bt_comprar1ActionPerformed(evt);
             }
         });
 
-        bt_verComponentes.setBackground(new java.awt.Color(86, 73, 98));
-        bt_verComponentes.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        bt_verComponentes.setForeground(new java.awt.Color(255, 255, 255));
-        bt_verComponentes.setText("Ver componentes");
-        bt_verComponentes.addActionListener(new java.awt.event.ActionListener() {
+        bt_verComponentes1.setBackground(new java.awt.Color(86, 73, 98));
+        bt_verComponentes1.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        bt_verComponentes1.setForeground(new java.awt.Color(255, 255, 255));
+        bt_verComponentes1.setText("Ver componentes");
+        bt_verComponentes1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_verComponentesActionPerformed(evt);
+                bt_verComponentes1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel_producto1Layout = new javax.swing.GroupLayout(panel_producto1);
+        panel_producto1.setLayout(panel_producto1Layout);
+        panel_producto1Layout.setHorizontalGroup(
+            panel_producto1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_producto1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(panel_producto1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_producto1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_producto1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(Label_error3))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(bt_comprar)
+                    .addGroup(panel_producto1Layout.createSequentialGroup()
+                        .addComponent(bt_comprar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_verComponentes)))
+                        .addComponent(bt_verComponentes1)))
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        panel_producto1Layout.setVerticalGroup(
+            panel_producto1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_producto1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(Label_error3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_comprar)
-                    .addComponent(bt_verComponentes))
+                .addGroup(panel_producto1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_comprar1)
+                    .addComponent(bt_verComponentes1))
                 .addGap(22, 22, 22))
         );
 
-        Panel_base.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 250, 220));
+        Panel_base.add(panel_producto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 250, 220));
+
+        panel_producto2.setBackground(new java.awt.Color(34, 36, 38));
+
+        Label_error4.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Computadora 2");
+
+        bt_comprar2.setBackground(new java.awt.Color(86, 73, 98));
+        bt_comprar2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        bt_comprar2.setForeground(new java.awt.Color(255, 255, 255));
+        bt_comprar2.setText("Comprar");
+        bt_comprar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_comprar2ActionPerformed(evt);
+            }
+        });
+
+        bt_verComponentes2.setBackground(new java.awt.Color(86, 73, 98));
+        bt_verComponentes2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        bt_verComponentes2.setForeground(new java.awt.Color(255, 255, 255));
+        bt_verComponentes2.setText("Ver componentes");
+        bt_verComponentes2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_verComponentes2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_producto2Layout = new javax.swing.GroupLayout(panel_producto2);
+        panel_producto2.setLayout(panel_producto2Layout);
+        panel_producto2Layout.setHorizontalGroup(
+            panel_producto2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_producto2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_producto2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_producto2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panel_producto2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(Label_error4))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panel_producto2Layout.createSequentialGroup()
+                        .addComponent(bt_comprar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_verComponentes2)))
+                .addContainerGap())
+        );
+        panel_producto2Layout.setVerticalGroup(
+            panel_producto2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_producto2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addComponent(Label_error4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_producto2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_comprar2)
+                    .addComponent(bt_verComponentes2))
+                .addGap(22, 22, 22))
+        );
+
+        Panel_base.add(panel_producto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 250, -1));
+
+        panel_producto3.setBackground(new java.awt.Color(34, 36, 38));
+
+        Label_error5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Computadora 3");
+
+        bt_comprar3.setBackground(new java.awt.Color(86, 73, 98));
+        bt_comprar3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        bt_comprar3.setForeground(new java.awt.Color(255, 255, 255));
+        bt_comprar3.setText("Comprar");
+        bt_comprar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_comprar3ActionPerformed(evt);
+            }
+        });
+
+        bt_verComponentes3.setBackground(new java.awt.Color(86, 73, 98));
+        bt_verComponentes3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        bt_verComponentes3.setForeground(new java.awt.Color(255, 255, 255));
+        bt_verComponentes3.setText("Ver componentes");
+        bt_verComponentes3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_verComponentes3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_producto3Layout = new javax.swing.GroupLayout(panel_producto3);
+        panel_producto3.setLayout(panel_producto3Layout);
+        panel_producto3Layout.setHorizontalGroup(
+            panel_producto3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_producto3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_producto3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_producto3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panel_producto3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(Label_error5))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panel_producto3Layout.createSequentialGroup()
+                        .addComponent(bt_comprar3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_verComponentes3)))
+                .addContainerGap())
+        );
+        panel_producto3Layout.setVerticalGroup(
+            panel_producto3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_producto3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addComponent(Label_error5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_producto3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_comprar3)
+                    .addComponent(bt_verComponentes3))
+                .addGap(22, 22, 22))
+        );
+
+        Panel_base.add(panel_producto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, 250, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -199,28 +395,73 @@ public class Tienda extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_comprarActionPerformed
+    private void bt_comprar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_comprar1ActionPerformed
+        Cliente user = clientectl.Buscar(this.label_usuario.getText());
+        Producto pc = pctl.Componentes(1);
+        Comprar com = new Comprar(user,pc);
+        CambiarPanel(com);
         
-    }//GEN-LAST:event_bt_comprarActionPerformed
+        
+    }//GEN-LAST:event_bt_comprar1ActionPerformed
 
-    private void bt_verComponentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verComponentesActionPerformed
+    private void bt_verComponentes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verComponentes1ActionPerformed
         VerComponentes ver = new VerComponentes(pctl.Componentes(1));
         ver.setVisible(true);
-    }//GEN-LAST:event_bt_verComponentesActionPerformed
+    }//GEN-LAST:event_bt_verComponentes1ActionPerformed
+
+    private void bt_comprar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_comprar2ActionPerformed
+        Cliente user = clientectl.Buscar(this.label_usuario.getText());
+        Producto pc = pctl.Componentes(2);
+        Comprar com = new Comprar(user,pc);
+        CambiarPanel(com);
+    }//GEN-LAST:event_bt_comprar2ActionPerformed
+
+    private void bt_verComponentes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verComponentes2ActionPerformed
+        VerComponentes ver = new VerComponentes(pctl.Componentes(2));
+        ver.setVisible(true);
+    }//GEN-LAST:event_bt_verComponentes2ActionPerformed
+
+    private void bt_comprar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_comprar3ActionPerformed
+        Cliente user = clientectl.Buscar(this.label_usuario.getText());
+        Producto pc = pctl.Componentes(3);
+        Comprar com = new Comprar(user,pc);
+        CambiarPanel(com);
+    }//GEN-LAST:event_bt_comprar3ActionPerformed
+
+    private void bt_verComponentes3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verComponentes3ActionPerformed
+        VerComponentes ver = new VerComponentes(pctl.Componentes(3));
+        ver.setVisible(true);
+    }//GEN-LAST:event_bt_verComponentes3ActionPerformed
+
+    private void bt_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_bt_salirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_error1;
     private javax.swing.JLabel Label_error2;
     private javax.swing.JLabel Label_error3;
+    private javax.swing.JLabel Label_error4;
+    private javax.swing.JLabel Label_error5;
     private javax.swing.JPanel Panel_base;
-    private javax.swing.JButton bt_comprar;
+    private javax.swing.JButton bt_comprar1;
+    private javax.swing.JButton bt_comprar2;
+    private javax.swing.JButton bt_comprar3;
     private javax.swing.JButton bt_salir;
-    private javax.swing.JButton bt_verComponentes;
+    private javax.swing.JButton bt_verComponentes1;
+    private javax.swing.JButton bt_verComponentes2;
+    private javax.swing.JButton bt_verComponentes3;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel label_usuario;
+    private javax.swing.JPanel panel_producto1;
+    private javax.swing.JPanel panel_producto2;
+    private javax.swing.JPanel panel_producto3;
     // End of variables declaration//GEN-END:variables
 }

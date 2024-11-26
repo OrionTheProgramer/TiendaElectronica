@@ -5,16 +5,18 @@
         <group>
             <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Database/Conexion.java</file>
             <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Delete.java</file>
+            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Comprar.java</file>
             <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Sesion.java</file>
-            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Tienda.java</file>
             <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Modelo/Producto.java</file>
-            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Controlador/ProductoCTL.java</file>
             <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Listado.java</file>
             <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Controlador/ClienteCTL.java</file>
-            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Registro.java</file>
             <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/VerComponentes.java</file>
-            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Modelo/Cliente.java</file>
             <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Inicio.java</file>
+            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Tienda.java</file>
+            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Controlador/CarritoCTL.java</file>
+            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Controlador/ProductoCTL.java</file>
+            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Vista/Registro.java</file>
+            <file>file:/C:/Users/orion/OneDrive/Documentos/NetBeansProjects/TiendaElectronica/src/Modelo/Cliente.java</file>
         </group>
     </open-files>
 </project-private>

@@ -98,7 +98,7 @@ public class ClienteCTL {
             
             
         } catch (SQLException e) {
-            System.out.println("Error en SQL al listar libros " + e.getMessage());
+            System.out.println("Error en SQL al listar " + e.getMessage());
         }
        return lista;
     }
@@ -130,4 +130,35 @@ public class ClienteCTL {
         }
     }
    
+    public static Cliente Buscar(String user_name) {
+        String query = "SELECT * FROM Cliente WHERE user_name = ?";
+        Cliente data = new Cliente();
+
+        try (Connection conn = Conexion.connect();
+             PreparedStatement cliente = conn.prepareStatement(query)) {
+
+            cliente.setString(1, user_name);
+
+            try (ResultSet rs = cliente.executeQuery()) {
+                
+                if (rs.next()) {
+                    // Si se encuentra un registro, la busqueda del usuario es exitosa
+                    System.out.println("Ingrreso Correcto");
+                    data.setNombre(rs.getString("user_name"));
+                    data.setCorreo(rs.getString("correo"));
+                    data.setContraseña(rs.getString("contraseña"));
+                    
+                    
+                }
+                else{
+                    data = null;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error" + e.getMessage());
+            data = null;
+        }
+        return data;
+    }
+    
 }

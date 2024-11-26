@@ -31,6 +31,7 @@ public class VerComponentes extends javax.swing.JFrame {
         this.label_grafica.setText(pc.getGrafica());
         this.label_ram.setText(pc.getRam());
         this.label_disco.setText(pc.getDisco());
+        this.label_precio.setText(""+pc.getPrecio());
     }
     
     /**
@@ -54,6 +55,8 @@ public class VerComponentes extends javax.swing.JFrame {
         label_disco = new javax.swing.JLabel();
         label14 = new javax.swing.JLabel();
         label_ram = new javax.swing.JLabel();
+        label_precio = new javax.swing.JLabel();
+        label15 = new javax.swing.JLabel();
         bt_cerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -103,12 +106,20 @@ public class VerComponentes extends javax.swing.JFrame {
         label_ram.setForeground(new java.awt.Color(255, 255, 255));
         label_ram.setText("null");
 
+        label_precio.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        label_precio.setForeground(new java.awt.Color(255, 255, 255));
+        label_precio.setText("null");
+
+        label15.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        label15.setForeground(new java.awt.Color(255, 255, 255));
+        label15.setText("Precio:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -135,7 +146,13 @@ public class VerComponentes extends javax.swing.JFrame {
                                 .addComponent(label14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(label_ram)))))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label15)
+                .addGap(18, 18, 18)
+                .addComponent(label_precio)
+                .addGap(36, 36, 36))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +177,11 @@ public class VerComponentes extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label13)
                     .addComponent(label_disco))
-                .addGap(463, 463, 463))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label_precio)
+                    .addComponent(label15))
+                .addGap(423, 423, 423))
         );
 
         Panel_base2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 350, 230));
@@ -244,9 +265,11 @@ public class VerComponentes extends javax.swing.JFrame {
     private javax.swing.JLabel label12;
     private javax.swing.JLabel label13;
     private javax.swing.JLabel label14;
+    private javax.swing.JLabel label15;
     private javax.swing.JLabel label_disco;
     private javax.swing.JLabel label_fabricante;
     private javax.swing.JLabel label_grafica;
+    private javax.swing.JLabel label_precio;
     private javax.swing.JLabel label_procesador1;
     private javax.swing.JLabel label_ram;
     // End of variables declaration//GEN-END:variables
